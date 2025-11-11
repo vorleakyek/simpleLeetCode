@@ -17,3 +17,20 @@ def reverse_string(s)
     print s
     s
 end
+
+# input as a string type 
+def reverse_string(s)
+  s.chars.reverse.join
+end
+
+puts reverse_string("hello")  # => "olleh"
+
+# input as an array type  
+def reverse_array(s)
+  (0...s.length / 2).each do |i|
+    s[i], s[s.length - 1 - i] = s[s.length - 1 - i], s[i]
+  end
+  s
+end
+
+puts reverse_array(['h','e','l','l','o']).join  # => "olleh"
