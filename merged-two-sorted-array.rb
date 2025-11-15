@@ -4,22 +4,24 @@
 # @param {Integer} n
 # @return {Void} Do not return anything, modify nums1 in-place instead.
 def merge(nums1, m, nums2, n)
-    i = j = 0
+    
+    write_ind = m + n - 1 
+    ind_1 = m - 1
+    ind_2 = n - 1 
 
-    while (i < m && j < n)
-        if (nums1[i] <= nums2[j])
-            i += 1 
+    while ind_2 >= 0 
+        if (ind_1 >= 0 && nums1[ind_1] > nums2[ind_2])
+            nums1[write_ind] = nums1[ind_1]
+            ind_1 -= 1
         else 
-            nums1[i], nums2[j] = nums2[j], nums1[i]
-            i +=1 
-        end
-    end
+            nums1[write_ind] = nums2[ind_2]
+            ind_2 -= 1  
+        end        
 
-    (m...nums1.length).each do |ind|
-        nums1[ind], nums2[j] = nums2[j], nums1[ind]
-        j +=1
+        write_ind -= 1 
     end
     
+    nums1 
 end
 
 
